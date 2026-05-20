@@ -1,7 +1,16 @@
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('[data-back]').forEach(function(btn){
-    btn.addEventListener('click', function(e){
-      if (document.referrer && document.referrer !== location.href) { e.preventDefault(); history.back(); }
+(function () {
+  const backButtons = document.querySelectorAll('[data-back]');
+
+  backButtons.forEach(function (button) {
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+
+      if (window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+
+      window.location.href = '/taxiparkstudio/';
     });
   });
-});
+})();
